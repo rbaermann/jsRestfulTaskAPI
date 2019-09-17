@@ -12,4 +12,16 @@ export class HttpService {
     // tempObservable.subscribe(data => console.log("Got our tasks!", data))
     return this._http.get('/tasks')
   }
+
+  addTask(newTask : any) {
+    return this._http.post('/tasks', newTask)
+  }
+
+  editTask(editTask : any) {
+    return this._http.put(`/tasks/${ editTask._id }`, editTask);
+  }
+
+  deleteTask(deleteTask : any) {
+    return this._http.delete(`/tasks/${ deleteTask._id }`, deleteTask)
+  }
 }

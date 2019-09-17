@@ -8,12 +8,40 @@
   </head>
   <body>
     <h1>Restful Tasks API</h1>
+
+    <form>
+
+      <p>{{ newTask | json }}</p>
+      <label>Task title:
+        <input type="text" name="newTask.title" [(ngModel)]="newTask.title"/>
+      </label>
+
+      <label>Task Description:
+        <input type="text" name="newTask.description" [(ngModel)]="newTask.description"/>
+      </label>
+
+      <input type="submit" value="Create Task" (click)="onSubmit()"/>
+
+    </form>
+
     <button (click)="getTasksFromService()">GET ALL TASKS</button>
     <div *ngFor="let task of tasks">
-      <p>{{ task.title }}<button (click)="taskinfo(task)">SHOW</button></p>
+      <p>{{ task.title }}<button (click)="editSelected(task)">Edit</button></p>
+      <p>{{ task.description }}<button (click)="deleteTask(task)">Delete</button></p>
     </div>
-    <div *ngIf="info">
-      <p>{{ this.info.title }}<br>{{ this.info.description }}</p>
-    </div>
+
+    <form *ngIf="editTask">
+
+      <label>Task title:
+          <input type="text" name="editTask.title" [(ngModel)]="editTask.title"/>
+        </label>
+  
+        <label>Task Description:
+          <input type="text" name="editTask.description" [(ngModel)]="editTask.description"/>
+        </label>
+  
+        <input type="submit" value="Update Task" (click)="onEdit()"/>
+
+    </form>
   </body>
 </html>
