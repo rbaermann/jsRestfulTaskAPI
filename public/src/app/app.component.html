@@ -8,9 +8,12 @@
   </head>
   <body>
     <h1>Restful Tasks API</h1>
-    <h2>All the tasks:</h2>
+    <button (click)="getTasksFromService()">GET ALL TASKS</button>
     <div *ngFor="let task of tasks">
-      <p>{{ task.title }}</p>
+      <p>{{ task.title }}<button (click)="taskinfo(task)">SHOW</button></p>
+    </div>
+    <div *ngIf="info">
+      <p>{{ this.info.title }}<br>{{ this.info.description }}</p>
     </div>
   </body>
 </html>

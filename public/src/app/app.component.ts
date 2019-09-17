@@ -9,12 +9,13 @@ import { HttpService } from './http.service';
 export class AppComponent implements OnInit{
   title = 'public';
   tasks = [];
+  info : any;
 
   constructor(private _httpService: HttpService) {
   }
 
   ngOnInit() {
-    this.getTasksFromService()
+    // this.getTasksFromService()
   }
 
   getTasksFromService() {
@@ -23,5 +24,10 @@ export class AppComponent implements OnInit{
       console.log("Got our data!", data)
       this.tasks = data["Task"];
     })
+  }
+
+  taskinfo(task : any) {
+    this.info = task;
+    return this.info;
   }
 }
