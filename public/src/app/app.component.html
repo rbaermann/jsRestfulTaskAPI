@@ -26,9 +26,12 @@
 
     <button (click)="getTasksFromService()">GET ALL TASKS</button>
     <div *ngFor="let task of tasks">
-      <p>{{ task.title }}<button (click)="editSelected(task)">Edit</button></p>
-      <p>{{ task.description }}<button (click)="deleteTask(task)">Delete</button></p>
+      <p>{{ task.title }}</p>
+      <button (click)="showTask(task)">SHOW</button>
+      <button (click)="editSelected(task)">Edit</button>
+      <button (click)="deleteTask(task)">Delete</button>
     </div>
+    <app-task *ngIf="selectedTask" [taskToShow]="selectedTask"></app-task>
 
     <form *ngIf="editTask">
 

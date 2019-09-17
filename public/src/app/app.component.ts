@@ -9,7 +9,7 @@ import { HttpService } from './http.service';
 export class AppComponent implements OnInit{
   title = 'public';
   tasks = [];
-  info : any;
+  selectedTask : any;
   newTask : any;
   editTask : any;
 
@@ -28,9 +28,8 @@ export class AppComponent implements OnInit{
     })
   }
 
-  taskinfo(task : any) {
-    this.info = task;
-    return this.info;
+  showTask(task : any) {
+    this.selectedTask = task;
   }
 
   onSubmit() {
